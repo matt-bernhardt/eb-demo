@@ -1,12 +1,19 @@
-<?
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-{
-  $file = '/tmp/sample-app.log';
-  $message = file_get_contents('php://input');
-  file_put_contents($file, date('Y-m-d H:i:s') . " Received message: " . $message . "\n", FILE_APPEND);
-}
-else
-{
+<?php
+/**
+ * Index page
+ *
+ * @category Page
+ * @package  Elastic_Beanstalk_Demonstration
+ * @author   Matt Bernhardt <mjbernha@mit.edu>
+ * @license  Apache https://www.apache.org/licenses/LICENSE-2.0.html
+ * @link     https://github.com/matt-bernhardt/eb-demo
+ */
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $file = '/tmp/sample-app.log';
+    $message = file_get_contents('php://input');
+    file_put_contents($file, date('Y-m-d H:i:s') . " Received message: " . $message . "\n", FILE_APPEND);
+} else {
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +32,7 @@ else
     <section class="congratulations">
         <h1>Congratulations!!!</h1>
         <p>Your AWS Elastic Beanstalk <em>PHP</em> application is now running on your own dedicated environment in the AWS&nbsp;Cloud</p>
-        <p>You are running PHP version <?= phpversion() ?></p>
+        <p>You are running PHP version <?php echo phpversion(); ?></p>
     </section>
 
     <section class="instructions">
@@ -49,6 +56,6 @@ else
     <!--[if lt IE 9]><script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 </body>
 </html>
-<? 
+<?php
 } 
 ?>
