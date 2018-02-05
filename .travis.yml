@@ -24,7 +24,7 @@ before_script:
 script:
   # Search for PHP syntax errors.
   - find . \( -name '*.php' \) -exec php -lf {} \;
-  - ./php-codesniffer/scripts/phpcs -p -s -v -n . --extensions=php --report=source --report=full
+  - ./php-codesniffer/scripts/phpcs -p -s -v -n . --standard=./codesniffer.ruleset.xml --extensions=php --report=source --report=full
 
 deploy:
   provider: elasticbeanstalk
